@@ -1,14 +1,46 @@
+import java.util.Scanner;
 
 public class MakeChange {
 
 	public static void main(String[] args) {
 		/* TODO get user input for item price
-		 * 		get user input for money provided
+		 * 			loop for additional items/ready to pay
+		 * 		if pay get user input for money provided
 		 * 		check and make sure input is valid
 		 * 		check and make sure money provided is sufficient
+		 * 			if yes subtract price from provided. if no
+		 * 			request more money.
+		 * 		use if greater than inside loop to check denominations 
+		 * 			that fit into result and subtract them.
+		 * 			add quantities to variable tracking change output
+		 * 		print amount of change and denominations provided in
+		 *
 		 */
+			double totalPrice=getTotal();
+			System.out.println(totalPrice);
+	
 		
 
+	}
+	public static double getTotal() {
+		Scanner sc=new Scanner(System.in);
+		double itemPrice=0,totalPrice=0;
+		String again="";
+		int i= 0;
+		
+		System.out.println("Please enter the price of the item you would like to purchase.");
+		do {
+			if(i!= 0) {
+				System.out.println("Please enter the price of the next item.");
+			}
+			itemPrice=sc.nextDouble();
+			totalPrice+=itemPrice;
+			System.out.println("Would you like to add another item? (Y/N)");
+			again=sc.next();
+			i++;
+			
+		}while(again.equals("y")|| again.equals("Y"));
+		return totalPrice;
 	}
 
 }
