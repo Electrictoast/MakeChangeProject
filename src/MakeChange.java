@@ -5,8 +5,8 @@ public class MakeChange {
 	public static void main(String[] args) {
 		
 		Scanner sc=new Scanner(System.in);
-		double totalPrice=getTotal();
-		double change=getChange(totalPrice);
+		double totalPrice=getTotal(sc);
+		double change=getChange(totalPrice,sc);
 		if (change!=0) {
 			int hundo, fiddy, twenty, tens, fives, ones;
 			int c25, c10, c5, c1;
@@ -39,10 +39,10 @@ public class MakeChange {
 		}else {
 			System.out.println("You've provided exact change\n\tThank You\n\t\tHave a nice day!");
 		}
+		sc.close();
 		
 	}
-	public static double getTotal() {
-		Scanner sc=new Scanner(System.in);
+	public static double getTotal(Scanner sc) {
 		double itemPrice=0,totalPrice=0;
 		String again="";
 		int i= 0;
@@ -66,9 +66,8 @@ public class MakeChange {
 		}while(again.equals("y")|| again.equals("Y"));
 		return totalPrice;
 	}
-	public static double getChange(double totalPrice) {
+	public static double getChange(double totalPrice, Scanner sc) {
 		double tempMoney ,moneyInput=0, remainder=0;
-		Scanner sc=new Scanner(System.in);
 		System.out.printf("Your total is: %.2f%n",totalPrice);
 		do {
 		System.out.println("Please enter payment amount.");
