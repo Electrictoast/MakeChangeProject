@@ -12,36 +12,38 @@ public class MakeChange {
 		Scanner sc=new Scanner(System.in);
 		double totalPrice=getTotal();
 		double change=getChange(totalPrice);
-	
-		int hundo, fiddy, twenty, tens, fives, ones;
-		int c25, c10, c5, c1;
-		double remainingChange=change+.005;
-		hundo=getBills(remainingChange, 100.00);
-			remainingChange-= (hundo*100);
-		fiddy=getBills(remainingChange, 50.00);
-			remainingChange-= (fiddy*50);
-		twenty=getBills(remainingChange, 20.00);
-			remainingChange-= (twenty*20);
-		tens=getBills(remainingChange, 10.00);
-			remainingChange-= (tens*10);
-		fives=getBills(remainingChange, 5.00);
-			remainingChange-= (fives*5);
-		ones=getBills(remainingChange, 1.00);
-			remainingChange-= (ones*1);
-		c25=getBills(remainingChange, .25);
-			remainingChange-= (c25*.25);
-		c10=getBills(remainingChange, .10);
-			remainingChange-= (c10*.10);
-		c5=getBills(remainingChange, .05);
-			remainingChange-= (c5*.05);
-		c1=getBills(remainingChange, .01);
-			remainingChange-= (c1*.01);
-		
-		System.out.printf("Your change is: %.2f%n", change);
-		System.out.printf("It will be distributed in the following denominations%n");
-		System.out.println(printChange(hundo, fiddy, twenty, tens, fives, ones, c25, c10, c5, c1 ));
-		System.out.println("Have a nice day!");
-		
+		if (change!=0) {
+			int hundo, fiddy, twenty, tens, fives, ones;
+			int c25, c10, c5, c1;
+			double remainingChange=change+.005;
+			hundo=getBills(remainingChange, 100.00);
+				remainingChange-= (hundo*100);
+			fiddy=getBills(remainingChange, 50.00);
+				remainingChange-= (fiddy*50);
+			twenty=getBills(remainingChange, 20.00);
+				remainingChange-= (twenty*20);
+			tens=getBills(remainingChange, 10.00);
+				remainingChange-= (tens*10);
+			fives=getBills(remainingChange, 5.00);
+				remainingChange-= (fives*5);
+			ones=getBills(remainingChange, 1.00);
+				remainingChange-= (ones*1);
+			c25=getBills(remainingChange, .25);
+				remainingChange-= (c25*.25);
+			c10=getBills(remainingChange, .10);
+				remainingChange-= (c10*.10);
+			c5=getBills(remainingChange, .05);
+				remainingChange-= (c5*.05);
+			c1=getBills(remainingChange, .01);
+				remainingChange-= (c1*.01);
+			
+			System.out.printf("Your change is: %.2f%n", change);
+			System.out.printf("It will be distributed in the following denominations%n");
+			System.out.println(printChange(hundo, fiddy, twenty, tens, fives, ones, c25, c10, c5, c1 ));
+			System.out.println("Have a nice day!");
+		}else {
+			System.out.println("You've provided exact change\n Thank You\n Have a nice day!");
+		}
 		
 	}
 	public static double getTotal() {
@@ -77,8 +79,11 @@ public class MakeChange {
 		}
 		remainder=totalPrice-moneyInput;
 		
-		return -remainder;
-		
+		if(remainder>0) {
+			return -remainder;
+		}else {
+			return 0;
+		}
 		
 		
 	}
