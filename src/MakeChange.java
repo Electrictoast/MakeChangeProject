@@ -13,56 +13,36 @@ public class MakeChange {
 		double totalPrice=getTotal();
 		double change=getChange(totalPrice);
 	
-		int hundo=0, fiddy=0, twenty=0, tens=0, fives=0, ones=0;
-		int c25=0, c10=0, c5=0, c1=0;
+		int hundo, fiddy, twenty, tens, fives, ones;
+		int c25, c10, c5, c1;
 		double remainingChange=change+.005;
+		hundo=getBills(remainingChange, 100.00);
+			remainingChange-= (hundo*100);
+		fiddy=getBills(remainingChange, 50.00);
+			remainingChange-= (fiddy*50);
+		twenty=getBills(remainingChange, 20.00);
+			remainingChange-= (twenty*20);
+		tens=getBills(remainingChange, 10.00);
+			remainingChange-= (tens*10);
+		fives=getBills(remainingChange, 5.00);
+			remainingChange-= (fives*5);
+		ones=getBills(remainingChange, 1.00);
+			remainingChange-= (ones*1);
+		c25=getBills(remainingChange, .25);
+			remainingChange-= (c25*.25);
+		c10=getBills(remainingChange, .10);
+			remainingChange-= (c10*.10);
+		c5=getBills(remainingChange, .05);
+			remainingChange-= (c5*.05);
+		c1=getBills(remainingChange, .01);
+			remainingChange-= (c1*.01);
 		
-		while(remainingChange>=100) {
-			remainingChange-=100;
-			hundo++;
-		}
-		while(remainingChange>=50) {
-			remainingChange-=50;
-			fiddy++;
-		}
-		while(remainingChange>=20) {
-			remainingChange-=20;
-			twenty++;
-		}
-		while(remainingChange>=10) {
-			remainingChange-=10;
-			tens++;
-		}
-		while(remainingChange>=5) {
-			remainingChange-=5;
-			fives++;
-		}
-		while(remainingChange>=1) {
-			remainingChange-=1;
-			ones++;
-		}
-		while(remainingChange>=.25) {
-			remainingChange-=.25;
-			c25++;
-		}
-		while(remainingChange>.10) {
-			remainingChange-=.10;
-			c10++;
-		}
-		while(remainingChange>.05) {
-			remainingChange-=.05;
-			c5++;
-		}
-		while(remainingChange>.01) {
-			remainingChange-=.01;
-			c1++;
-		}
 		System.out.printf("Your change is: %.2f%n", change);
 		System.out.printf("It will be distributed in the following denominations%n");
-		System.out.printf("%d : hundreds  %d : fifties  %d : twenties  %d : tens  %d : fives  %d : ones%n%d : quarters  %d : dimes %d : nickels  %d : pennies%n Have a nice day!", hundo, fiddy, twenty, tens, fives, ones, c25, c10, c5, c1 );
-	
+		System.out.println(printChange(hundo, fiddy, twenty, tens, fives, ones, c25, c10, c5, c1 ));
+		System.out.println("Have a nice day!");
 		
-
+		
 	}
 	public static double getTotal() {
 		Scanner sc=new Scanner(System.in);
@@ -101,6 +81,90 @@ public class MakeChange {
 		
 		
 		
+	}
+	public static int getBills(double remainingChange, double denomination) {
+		int count=0;
+		while(remainingChange>denomination) {
+			remainingChange-=denomination;
+			count++;
+		}
+		return count;
+		
+	}
+	public static String printChange(int hundo,int fiddy,int twenty,int tens,int fives,int ones,int c25, int c10,int c5,int c1 ) {
+		String changePrint="";
+		if (hundo>=1) {
+			if (hundo==1) {
+				changePrint+= hundo+" : Hundred ";
+			}else if (hundo>1) {
+				changePrint+= hundo+" : Hundreds ";
+			}
+		}
+		if (fiddy>=1) {
+			if (fiddy==1) {
+				changePrint+= fiddy+" : Fifty ";
+			}else if (twenty>1) {
+				changePrint+= fiddy+" : Fifties ";
+			}
+		}
+		if (twenty>=1) {
+			if (twenty==1) {
+				changePrint+= twenty+" : Twenty ";
+			}else if (twenty>1) {
+				changePrint+= twenty+" : Twenties ";
+			}
+		}
+		if (tens>=1) {
+			if (tens==1) {
+				changePrint+= tens+" : Ten ";
+			}else if (tens>1) {
+				changePrint+= tens+" : Tens ";
+			}
+		}
+		if (fives>=1) {
+			if (fives==1) {
+				changePrint+= fives+" : Five ";
+			}else if (fives>1) {
+				changePrint+= fives+" : Fives ";
+			}
+		}
+		if (ones>=1) {
+			if (ones==1) {
+				changePrint+= ones+" : one ";
+			}else if (ones>1) {
+				changePrint+= ones+" : ones ";
+			}
+		}
+		if (c25>=1) {
+			if (c25==1) {
+				changePrint+= c25+" : Quarter ";
+			}else if (c25>1) {
+				changePrint+= c25+" : Quarters ";
+			}
+		}
+		if (c10>=1) {
+			if (c10==1) {
+				changePrint+= c10+" : Dime ";
+			}else if (c10>1) {
+				changePrint+= c10+" : Dimes ";
+			}
+		}
+		if (c5>=1) {
+			if (c5==1) {
+				changePrint+= c5+" : Nickel ";
+			}else if (c5>1) {
+				changePrint+= c5+" : Nickels ";
+			}
+		}
+		if (c1>=1) {
+			if (c1==1) {
+				changePrint+= c1+" : Penny ";
+			}else if (c1>1) {
+				changePrint+= c1+" : Pennies ";
+			}
+		}
+		
+		return changePrint;
 	}
 
 }
