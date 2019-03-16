@@ -67,19 +67,28 @@ public class MakeChange {
 		return totalPrice;
 	}
 	public static double getChange(double totalPrice) {
+		double tempMoney ,moneyInput=0, remainder=0;
 		Scanner sc=new Scanner(System.in);
 		System.out.printf("Your total is: %.2f%n",totalPrice);
+		do {
 		System.out.println("Please enter payment amount.");
-		double moneyInput=sc.nextDouble(), remainder=0;
-		while (moneyInput<totalPrice) {
+			tempMoney=sc.nextDouble();
+		if(tempMoney>0) {
+			moneyInput+=tempMoney;
 			remainder=totalPrice-moneyInput;
+			if(remainder>0) {
+		 
 			System.out.printf("Insufficient funds remaining balance is %.2f%n",remainder);
 			System.out.println("Please enter additional funds.");
-			moneyInput+=sc.nextDouble();
+			}
+		}else {
+			System.out.println("ERROR\nInvalid entry");
 		}
+		}while (moneyInput<totalPrice); 
+		
 		remainder=totalPrice-moneyInput;
 		
-		if(remainder>0) {
+		if(remainder<0) {
 			return -remainder;
 		}else {
 			return 0;
