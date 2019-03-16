@@ -3,11 +3,6 @@ import java.util.Scanner;
 public class MakeChange {
 
 	public static void main(String[] args) {
-		/* TODO 
-		 * 		add validation for user inputs
-		 * 		add zero case
-		 *
-		 */
 		
 		Scanner sc=new Scanner(System.in);
 		double totalPrice=getTotal();
@@ -42,7 +37,7 @@ public class MakeChange {
 			System.out.println(printChange(hundo, fiddy, twenty, tens, fives, ones, c25, c10, c5, c1 ));
 			System.out.println("Have a nice day!");
 		}else {
-			System.out.println("You've provided exact change\n Thank You\n Have a nice day!");
+			System.out.println("You've provided exact change\n\tThank You\n\t\tHave a nice day!");
 		}
 		
 	}
@@ -58,10 +53,15 @@ public class MakeChange {
 				System.out.println("Please enter the price of the next item.");
 			}
 			itemPrice=sc.nextDouble();
+			if (itemPrice>0) {
 			totalPrice+=itemPrice;
 			System.out.println("Would you like to add another item? (Y/N)");
 			again=sc.next();
 			i++;
+			}else {
+				System.out.println("ERROR\nYou have entered an invalid amount\nConfirm the price and try again.");
+				again="y";
+			}
 			
 		}while(again.equals("y")|| again.equals("Y"));
 		return totalPrice;
