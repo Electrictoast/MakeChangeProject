@@ -142,9 +142,9 @@ public class MakeChange {
 		}
 		if (ones>=1) {
 			if (ones==1) {
-				changePrint+= ones+" : one ";
+				changePrint+= ones+" : One ";
 			}else if (ones>1) {
-				changePrint+= ones+" : ones ";
+				changePrint+= ones+" : Ones ";
 			}
 		}
 		if (c25>=1) {
