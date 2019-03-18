@@ -77,8 +77,7 @@ public class MakeChange {
 			remainder=totalPrice-moneyInput;
 			if(remainder>0) {
 		 
-			System.out.printf("Insufficient funds remaining balance is %.2f%n",remainder);
-			System.out.println("Please enter additional funds.");
+			System.out.printf("Remaining balance is %.2f%n",remainder);
 			}
 		}else {
 			System.out.println("ERROR\nInvalid entry");
